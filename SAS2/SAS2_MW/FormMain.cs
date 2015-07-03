@@ -132,7 +132,7 @@ namespace SAS2_MW
                         {
                             case "setup":
                             case "change_d":
-                                if (urlParts[4] == "Output" || urlParts[4] == "true") parameter = 0x01;
+                                if (urlParts[4] == "Output" || urlParts[4] == "Ausgang" || urlParts[4] == "true") parameter = 0x01;
                                 break;
                             case "change_a":
                                 decimal value = Convert.ToDecimal(urlParts[4], CultureInfo.InvariantCulture);

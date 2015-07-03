@@ -1,0 +1,21 @@
+﻿{
+    "extensionName": "Arduino UNO",
+    "extensionPort": 45133,
+    "blockSpecs": [
+        [ "w", "nimm Pin %m.digitalPins als %m.inputMode", "setup", "D13", "Ausgang" ],
+        [ "w", "schalte Pin %m.digitalPins %b", "change_d", "D13" ],
+        [ "w", "regle Pin %m.analogOutPins auf %n%", "change_a", "D3", "50" ],
+        [ "-" ],
+        [ "b", "status von %m.digitalPins", "get_d", "D8" ],
+        [ "r", "wert von %m.analogInPins", "get_a", "A0" ],
+        [ "-" ],
+        [ "b", "AN", "high" ],
+        [ "b", "AUS", "low" ]
+    ],
+    "menus": {
+        "digitalPins": [ "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D13" ],
+        "analogInPins": [ "A0", "A1", "A2", "A3", "A4", "A5" ],
+        "analogOutPins": [ "D3", "D5", "D6", "D9", "D10", "D11" ],
+        "inputMode": [ "Ausgang", "Eingang" ]
+    }
+}
