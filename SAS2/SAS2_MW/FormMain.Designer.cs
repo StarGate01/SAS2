@@ -28,66 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxHTTPLog = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxLastHTTPResponse = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            this.labelLastHTTPResponse = new System.Windows.Forms.Label();
             this.comboBoxPort = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonConnect = new System.Windows.Forms.Button();
             this.buttonDisconnect = new System.Windows.Forms.Button();
-            this.textBoxArduinoIn = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxArduinoOut = new System.Windows.Forms.TextBox();
             this.buttonRefreshPort = new System.Windows.Forms.Button();
-            this.checkBoxViewPolling = new System.Windows.Forms.CheckBox();
-            this.checkBoxViewSYNACK = new System.Windows.Forms.CheckBox();
-            this.buttonClearLogs = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelHTTPState = new System.Windows.Forms.Label();
+            this.labelCOMState = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBoxHTTPLog
+            // labelLastHTTPResponse
             // 
-            this.textBoxHTTPLog.Location = new System.Drawing.Point(12, 96);
-            this.textBoxHTTPLog.Multiline = true;
-            this.textBoxHTTPLog.Name = "textBoxHTTPLog";
-            this.textBoxHTTPLog.ReadOnly = true;
-            this.textBoxHTTPLog.Size = new System.Drawing.Size(150, 413);
-            this.textBoxHTTPLog.TabIndex = 2;
-            this.textBoxHTTPLog.WordWrap = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "HTTP Requests";
-            // 
-            // textBoxLastHTTPResponse
-            // 
-            this.textBoxLastHTTPResponse.Location = new System.Drawing.Point(168, 96);
-            this.textBoxLastHTTPResponse.Multiline = true;
-            this.textBoxLastHTTPResponse.Name = "textBoxLastHTTPResponse";
-            this.textBoxLastHTTPResponse.ReadOnly = true;
-            this.textBoxLastHTTPResponse.Size = new System.Drawing.Size(150, 413);
-            this.textBoxLastHTTPResponse.TabIndex = 4;
-            this.textBoxLastHTTPResponse.WordWrap = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(165, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Last HTTP response";
+            this.labelLastHTTPResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelLastHTTPResponse.Location = new System.Drawing.Point(3, 16);
+            this.labelLastHTTPResponse.Name = "labelLastHTTPResponse";
+            this.labelLastHTTPResponse.Size = new System.Drawing.Size(246, 332);
+            this.labelLastHTTPResponse.TabIndex = 5;
             // 
             // comboBoxPort
             // 
             this.comboBoxPort.FormattingEnabled = true;
-            this.comboBoxPort.Location = new System.Drawing.Point(12, 25);
+            this.comboBoxPort.Location = new System.Drawing.Point(6, 32);
             this.comboBoxPort.Name = "comboBoxPort";
             this.comboBoxPort.Size = new System.Drawing.Size(211, 21);
             this.comboBoxPort.TabIndex = 6;
@@ -95,7 +69,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Location = new System.Drawing.Point(3, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 7;
@@ -103,10 +77,9 @@
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConnect.Location = new System.Drawing.Point(437, 9);
+            this.buttonConnect.Location = new System.Drawing.Point(7, 19);
             this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(193, 23);
+            this.buttonConnect.Size = new System.Drawing.Size(239, 23);
             this.buttonConnect.TabIndex = 8;
             this.buttonConnect.Text = "Start servers";
             this.buttonConnect.UseVisualStyleBackColor = true;
@@ -115,143 +88,148 @@
             // buttonDisconnect
             // 
             this.buttonDisconnect.Enabled = false;
-            this.buttonDisconnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDisconnect.Location = new System.Drawing.Point(437, 38);
+            this.buttonDisconnect.Location = new System.Drawing.Point(7, 48);
             this.buttonDisconnect.Name = "buttonDisconnect";
-            this.buttonDisconnect.Size = new System.Drawing.Size(193, 23);
+            this.buttonDisconnect.Size = new System.Drawing.Size(239, 23);
             this.buttonDisconnect.TabIndex = 9;
             this.buttonDisconnect.Text = "Close servers";
             this.buttonDisconnect.UseVisualStyleBackColor = true;
             this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
             // 
-            // textBoxArduinoIn
-            // 
-            this.textBoxArduinoIn.Location = new System.Drawing.Point(324, 96);
-            this.textBoxArduinoIn.Multiline = true;
-            this.textBoxArduinoIn.Name = "textBoxArduinoIn";
-            this.textBoxArduinoIn.ReadOnly = true;
-            this.textBoxArduinoIn.Size = new System.Drawing.Size(150, 413);
-            this.textBoxArduinoIn.TabIndex = 10;
-            this.textBoxArduinoIn.WordWrap = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(321, 80);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Arduino In";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(477, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Arduino Out";
-            // 
-            // textBoxArduinoOut
-            // 
-            this.textBoxArduinoOut.Location = new System.Drawing.Point(480, 96);
-            this.textBoxArduinoOut.Multiline = true;
-            this.textBoxArduinoOut.Name = "textBoxArduinoOut";
-            this.textBoxArduinoOut.ReadOnly = true;
-            this.textBoxArduinoOut.Size = new System.Drawing.Size(150, 413);
-            this.textBoxArduinoOut.TabIndex = 12;
-            this.textBoxArduinoOut.WordWrap = false;
-            // 
             // buttonRefreshPort
             // 
-            this.buttonRefreshPort.Image = global::SAS2_MW.Properties.Resources.refresh_16xLG;
-            this.buttonRefreshPort.Location = new System.Drawing.Point(229, 19);
+            this.buttonRefreshPort.BackgroundImage = global::SAS2_MW.Properties.Resources.refresh_16xLG;
+            this.buttonRefreshPort.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonRefreshPort.Location = new System.Drawing.Point(223, 31);
             this.buttonRefreshPort.Name = "buttonRefreshPort";
-            this.buttonRefreshPort.Size = new System.Drawing.Size(30, 30);
+            this.buttonRefreshPort.Size = new System.Drawing.Size(23, 23);
             this.buttonRefreshPort.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.buttonRefreshPort, "Refresh COM port list");
             this.buttonRefreshPort.UseVisualStyleBackColor = true;
             this.buttonRefreshPort.Click += new System.EventHandler(this.buttonRefreshPort_Click);
             // 
-            // checkBoxViewPolling
+            // groupBox1
             // 
-            this.checkBoxViewPolling.AutoSize = true;
-            this.checkBoxViewPolling.Location = new System.Drawing.Point(11, 515);
-            this.checkBoxViewPolling.Name = "checkBoxViewPolling";
-            this.checkBoxViewPolling.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxViewPolling.TabIndex = 17;
-            this.checkBoxViewPolling.Text = "View polling";
-            this.checkBoxViewPolling.UseVisualStyleBackColor = true;
+            this.groupBox1.Controls.Add(this.labelLastHTTPResponse);
+            this.groupBox1.Location = new System.Drawing.Point(270, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(252, 351);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Last response";
             // 
-            // checkBoxViewSYNACK
+            // groupBox2
             // 
-            this.checkBoxViewSYNACK.AutoSize = true;
-            this.checkBoxViewSYNACK.Location = new System.Drawing.Point(324, 515);
-            this.checkBoxViewSYNACK.Name = "checkBoxViewSYNACK";
-            this.checkBoxViewSYNACK.Size = new System.Drawing.Size(120, 17);
-            this.checkBoxViewSYNACK.TabIndex = 15;
-            this.checkBoxViewSYNACK.Text = "View SYN/ACK/OK";
-            this.checkBoxViewSYNACK.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.comboBoxPort);
+            this.groupBox2.Controls.Add(this.buttonRefreshPort);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(252, 62);
+            this.groupBox2.TabIndex = 16;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Settings";
             // 
-            // buttonClearLogs
+            // groupBox3
             // 
-            this.buttonClearLogs.Location = new System.Drawing.Point(11, 538);
-            this.buttonClearLogs.Name = "buttonClearLogs";
-            this.buttonClearLogs.Size = new System.Drawing.Size(81, 23);
-            this.buttonClearLogs.TabIndex = 19;
-            this.buttonClearLogs.Text = "Clear logs";
-            this.buttonClearLogs.UseVisualStyleBackColor = true;
-            this.buttonClearLogs.Click += new System.EventHandler(this.buttonClearLogs_Click);
+            this.groupBox3.Controls.Add(this.buttonConnect);
+            this.groupBox3.Controls.Add(this.buttonDisconnect);
+            this.groupBox3.Location = new System.Drawing.Point(12, 80);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(252, 88);
+            this.groupBox3.TabIndex = 17;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Controls";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.labelCOMState);
+            this.groupBox4.Controls.Add(this.labelHTTPState);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Location = new System.Drawing.Point(12, 174);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(252, 51);
+            this.groupBox4.TabIndex = 18;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "State";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Last HTTP request:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Last COM read: ";
+            // 
+            // labelHTTPState
+            // 
+            this.labelHTTPState.AutoSize = true;
+            this.labelHTTPState.Location = new System.Drawing.Point(112, 16);
+            this.labelHTTPState.Name = "labelHTTPState";
+            this.labelHTTPState.Size = new System.Drawing.Size(0, 13);
+            this.labelHTTPState.TabIndex = 10;
+            // 
+            // labelCOMState
+            // 
+            this.labelCOMState.AutoSize = true;
+            this.labelCOMState.Location = new System.Drawing.Point(112, 29);
+            this.labelCOMState.Name = "labelCOMState";
+            this.labelCOMState.Size = new System.Drawing.Size(0, 13);
+            this.labelCOMState.TabIndex = 11;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 570);
-            this.Controls.Add(this.buttonClearLogs);
-            this.Controls.Add(this.checkBoxViewPolling);
-            this.Controls.Add(this.checkBoxViewSYNACK);
-            this.Controls.Add(this.textBoxLastHTTPResponse);
-            this.Controls.Add(this.textBoxArduinoIn);
-            this.Controls.Add(this.textBoxHTTPLog);
-            this.Controls.Add(this.textBoxArduinoOut);
-            this.Controls.Add(this.buttonRefreshPort);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.buttonDisconnect);
-            this.Controls.Add(this.buttonConnect);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBoxPort);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(534, 376);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Text = "SAS2_MW";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxHTTPLog;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxLastHTTPResponse;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelLastHTTPResponse;
         private System.Windows.Forms.ComboBox comboBoxPort;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonConnect;
         private System.Windows.Forms.Button buttonDisconnect;
-        private System.Windows.Forms.TextBox textBoxArduinoIn;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxArduinoOut;
         private System.Windows.Forms.Button buttonRefreshPort;
-        private System.Windows.Forms.CheckBox checkBoxViewPolling;
-        private System.Windows.Forms.CheckBox checkBoxViewSYNACK;
-        private System.Windows.Forms.Button buttonClearLogs;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label labelCOMState;
+        private System.Windows.Forms.Label labelHTTPState;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

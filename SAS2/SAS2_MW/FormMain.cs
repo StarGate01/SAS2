@@ -14,7 +14,7 @@ namespace SAS2_MW
     {
 
         private const int HTTPPortNumber = 45133;
-        private const int Baud = 115200;
+        private const int Baud = 9600;
         private ScratchListener SListener;
         private ArduinoListener AListener;
         private string[] TextBoxContents = new string[4];
@@ -45,7 +45,6 @@ namespace SAS2_MW
                 SListener.Request += SListener_Request;
                 AListener = new ArduinoListener(comboBoxPort.SelectedItem.ToString(), Baud);
                 AListener.Read += AListener_Read;
-                AListener.Write += AListener_Write;
             }
             catch
             {
@@ -61,11 +60,10 @@ namespace SAS2_MW
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
             if (SListener != null) SListener.Dispose();
-            textBoxHTTPLog.Clear();
-            textBoxLastHTTPResponse.Clear();
+            labelLastHTTPResponse.Text = "";
             if (AListener != null) AListener.Dispose();
-            textBoxArduinoIn.Clear();
-            textBoxArduinoOut.Clear();
+            labelHTTPState.Text = "";
+            labelCOMState.Text = "";
             buttonConnect.Enabled = true;
             buttonDisconnect.Enabled = false;
             buttonRefreshPort.Enabled = true;
@@ -79,14 +77,6 @@ namespace SAS2_MW
             if (comboBoxPort.Items.Count > 0) comboBoxPort.SelectedIndex = 0;
         }
 
-        private void buttonClearLogs_Click(object sender, EventArgs e)
-        {
-            textBoxHTTPLog.Clear();
-            textBoxLastHTTPResponse.Clear();
-            textBoxArduinoIn.Clear();
-            textBoxArduinoOut.Clear();
-        }
-
         #endregion
 
         #region Core events
@@ -95,8 +85,7 @@ namespace SAS2_MW
         {
             BeginInvoke((MethodInvoker)delegate
             {
-                if (args.RawURL != "/poll" || checkBoxViewPolling.Checked)
-                    textBoxHTTPLog.AppendText(args.RawURL + Environment.NewLine);
+                labelHTTPState.Text = DateTime.Now.ToString("HH:mm:ss.fff");
             });
             string[] urlParts = args.RawURL.Split('/');
             if (urlParts[1] == "poll")
@@ -113,7 +102,7 @@ namespace SAS2_MW
                 }
                 BeginInvoke((MethodInvoker)delegate
                 {
-                    textBoxLastHTTPResponse.Text = value.Replace(nl.ToString(), Environment.NewLine);
+                    labelLastHTTPResponse.Text = value.Replace(nl.ToString(), Environment.NewLine);
                 });
                 return value;
             }
@@ -165,23 +154,11 @@ namespace SAS2_MW
             return "";
         }
 
-        private void AListener_Write(object sender, byte[] message, string description)
+        void AListener_Read(object sender)
         {
             BeginInvoke((MethodInvoker)delegate
             {
-                if ((description != "SYN" || checkBoxViewSYNACK.Checked) &&
-                    (message[0] != 0x00 || checkBoxViewPolling.Checked))
-                    textBoxArduinoIn.AppendText(description + ": [0x" + BitConverter.ToString(message).Replace("-", " 0x") + "]" + Environment.NewLine);
-            });
-        }
-
-        private void AListener_Read(object sender, byte[] message, string description)
-        {
-            BeginInvoke((MethodInvoker)delegate
-            {
-                if (((description != "OK" && description != "ACK") || checkBoxViewSYNACK.Checked) &&
-                    (description != "DATA" || checkBoxViewPolling.Checked))
-                    textBoxArduinoOut.AppendText(description + ": [0x" + BitConverter.ToString(message).Replace("-", " 0x") + "]" + Environment.NewLine);
+                labelCOMState.Text = DateTime.Now.ToString("HH:mm:ss.fff");
             });
         }
 

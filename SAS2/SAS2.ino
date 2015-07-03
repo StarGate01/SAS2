@@ -7,7 +7,7 @@ void setup()
 {
 	for (int i = 0; i < 14; i++) pinMode(i, INPUT);
 	waitsForSYN = true;
-	Serial.begin(115200);
+	Serial.begin(9600);
 }
 
 void loop()

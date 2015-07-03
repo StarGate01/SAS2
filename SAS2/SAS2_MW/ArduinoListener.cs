@@ -40,12 +40,9 @@ namespace SAS2_MW
         private byte[] LastPollData;
         private int LastPollDataPosition;
 
-        public event WriteEventHandler Write;
-        public delegate void WriteEventHandler(object sender, byte[] message, string description);
-        protected virtual void OnWrite(byte[] message, string description) { if (Write != null) Write(this, message, description); }
         public event ReadEventHandler Read;
-        public delegate void ReadEventHandler(object sender, byte[] message, string description);
-        protected virtual void OnRead(byte[] message, string description) { if (Read != null) Read(this, message, description); }
+        public delegate void ReadEventHandler(object sender);
+        protected virtual void OnRead() { if (Read != null) Read(this); }
 
         public ArduinoListener(string portName, int baud)
         {
@@ -68,7 +65,6 @@ namespace SAS2_MW
                     lock (WriteMonitor)
                     {
                         WaitsForACK = true;
-                        OnWrite(new byte[] { 0x42 }, "SYN");
                         SPort.Write(new byte[] { 0x42 }, 0, 1);
                         waitACKHandle.WaitOne();
                         if (!token.IsCancellationRequested)
@@ -105,7 +101,6 @@ namespace SAS2_MW
                                 LastPollData = new byte[14];
                                 LastPollDataPosition = 0;
                             }
-                            OnWrite(binaryCommand, "CMD");
                             SPort.Write(binaryCommand, 0, binaryCommand.Length);
                             waitOKHandle.WaitOne();
                             if (!token.IsCancellationRequested)
@@ -119,9 +114,7 @@ namespace SAS2_MW
                                         int value = 256 * LastPollData[2 + (i * 2)] + LastPollData[3 + (i * 2)];
                                         LastState.AnalogPins[i] = value * 100m / 1023m;
                                     }
-                                    OnRead(LastPollData, "DATA");
                                 }
-                                OnRead(new byte[] { 0x66 }, "OK");
                             }
                         }
                     }
@@ -133,12 +126,12 @@ namespace SAS2_MW
         {
             while (SPort.IsOpen && SPort.BytesToRead > 0)
             {
+                OnRead();
                 byte data = Convert.ToByte(SPort.ReadByte());
                 if (WaitsForACK)
                 {
                     if (data == 0x13)
                     {
-                        OnRead(new byte[] { 0x13 }, "ACK");
                         waitACKHandle.Set();
                     }
                 }
