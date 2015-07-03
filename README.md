@@ -3,6 +3,8 @@
 
 This is a extension for the Scratch 2.0 Offline Editor, adding support for programming with the Arduino. 
 
+You speak German? --> https://www.vb-paradise.de/index.php/Thread/109864-Update-Scratch-Arduino-Server-2-0/
+
 ###Requirements:
  - Windows
  - Arduino with installed drivers and connection to your PC
