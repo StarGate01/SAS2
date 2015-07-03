@@ -10,7 +10,7 @@ You speak German? --> https://www.vb-paradise.de/index.php/Thread/109864-Update-
  - Arduino with installed drivers and connection to your PC
  - Adobe AIR, required by
  - Scratch 2.0 Offline Editor
- - At least .NET Framework 3.5 
+ - At least .NET Framework 4 
 
 ###Requirements to compile:
  - Visual Studio 2013
