@@ -1,0 +1,18 @@
+0x42 (SYN)
+0x13 (ACK)
+
+Command len=3
+0x00 poll
+0x01 setup
+0x02 change_d
+0x03 change_a
+0x04 reset
+
+[p1] (pin number)
+[p2] (low/high | in/out | analog value)
+
+normal response
+[0x66] (OK) len = 0 + 1
+
+poll response
+[D0 ... D7] [D8 .. D13 0x00 0x00] [A0_low] [A0_high] ... [A5_low] [A5_high] [0x66] len = 14 + 1
